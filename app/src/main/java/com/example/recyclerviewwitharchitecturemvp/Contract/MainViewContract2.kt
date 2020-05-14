@@ -12,8 +12,6 @@ interface MainViewContract2 {
     }
 
     interface Presenter{
-        var view : View
-        var imageModel : SampleImageModel
         fun loadItems(context : Context, isClear: Boolean, size : Int)
     }
 

@@ -17,19 +17,19 @@ class MainActivity2 : AppCompatActivity(), MainViewContract2.View {
         findViewById<RecyclerView>(R.id.recycler_view)
     }
 
-    private val imageAdapter : ImageAdapter by lazy {
+    private val imageAdapter by lazy {
         ImageAdapter()
     }
 
-    private lateinit var presenter2 : MainViewContract2.Presenter
+    private lateinit var presenter2 : MainViewPresenter2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        presenter2 = MainViewPresenter2().apply {
-            view = this@MainActivity2
+        setContentView(R.layout.image_recycler_view)
+        presenter2 = MainViewPresenter2(
+            view = this@MainActivity2,
             imageModel = SampleImageModel
-        }
+        )
 
         recyclerView.adapter = imageAdapter
 

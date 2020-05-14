@@ -1,3 +1,5 @@
 package com.example.recyclerviewwitharchitecturemvp.Model
 
-class ImageItem (var name : String, var resource : Int)
+import android.graphics.drawable.Drawable
+
+class ImageItem (var name : String, var resource : Drawable)

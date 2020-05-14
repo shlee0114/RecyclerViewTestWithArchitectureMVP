@@ -16,20 +16,21 @@ import java.lang.ref.WeakReference
 class ImageAdapter : RecyclerView.Adapter<ImageViewHolder>(){
     var imageList : ArrayList<ImageItem>? = null
 
-    override fun getItemCount() = imageList?.size ?: 0
-
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         val item = imageList?.get(position)
 
-        ImageAsync(holder.imageView).execute(item?.resource)
+        holder.imageView.setImageDrawable(item?.resource)
+        //ImageAsync(holder.imageView).execute(item?.resource)
         holder.textView.text = item?.name
         holder.itemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context, "show ${item?.name}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context, "show ${item?.resource}", Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder =
         ImageViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false))
+
+    override fun getItemCount() = imageList?.size ?: 0
 
     class ImageAsync(imageView : ImageView) : AsyncTask<Int, Void, Bitmap>(){
 
